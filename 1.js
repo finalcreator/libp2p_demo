@@ -4,6 +4,7 @@ const TCP = require('libp2p-tcp')
 const PeerInfo = require('peer-info')
 const waterfall = require('async/waterfall')
 const defaultsDeep = require('@nodeutils/defaults-deep')
+const pull = require('pull-stream')
 
 class MyBundle extends libp2p {
     constructor (_options) {
