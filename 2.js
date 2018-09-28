@@ -1,6 +1,6 @@
-'use strict'
+"use strict"
 
-const libp2p = require('../../')
+const libp2p = require('libp2p')
 const TCP = require('libp2p-tcp')
 const PeerInfo = require('peer-info')
 const waterfall = require('async/waterfall')
@@ -62,7 +62,11 @@ parallel([
 
   node1.dialProtocol(node2.peerInfo, '/print', (err, conn) => {
     if (err) { throw err }
+    let arr=[]
+    for (let i=0;i<66;i++){
+        arr.push(i.toString())
+    }
+        pull(pull.values(arr), conn)
 
-    pull(pull.values(['Hello', ' ', 'p2p', ' ', 'world', '!']), conn)
   })
 })
